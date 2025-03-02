@@ -1,5 +1,6 @@
-package com.aengdulab.ticket.service;
+package com.aengdulab.ticket;
 
+import com.aengdulab.ticket.service.MemberTicketService;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.aengdulab.ticket.domain.Member;
@@ -23,9 +24,9 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 
 @SpringBootTest(webEnvironment = WebEnvironment.NONE)
 @SuppressWarnings("NonAsciiCharacters")
-class MemberTicketServiceConcurrencyTest {
+class MissionTest {
 
-    private static final Logger log = LoggerFactory.getLogger(MemberTicketServiceConcurrencyTest.class);
+    private static final Logger log = LoggerFactory.getLogger(MissionTest.class);
     private static final int MEMBER_TICKET_COUNT_MAX = 2;
 
     @Autowired
@@ -47,8 +48,11 @@ class MemberTicketServiceConcurrencyTest {
         ticketRepository.deleteAllInBatch();
     }
 
+    /*
+     * TODO: 테스트를 성공시키자!
+     */
     @Test
-    void 동시_티켓_발행에서_멤버당_발급_제한과_재고_감소의_정합성을_검증한다() {
+    void 티켓이_모두_팔렸지만_재고가_0이_아닌_문제() {
         int ticketQuantity = 10;
         int memberCount = 5;
         Ticket ticket = createTicket("목성행", ticketQuantity);
@@ -67,8 +71,11 @@ class MemberTicketServiceConcurrencyTest {
         }
     }
 
+    /*
+     * TODO: 테스트를 성공시키자!
+     */
     @Test
-    void 멤버당_티켓_발급_제한을_초과하는_요청_시_정상_처리_여부를_검증한다() {
+    void 멤버가_구매_가능_한도를_초과하여_티켓을_발급받은_문제() {
         int ticketQuantity = 30;
         int memberCount = 5;
         int ticketIssueCount = 3 * MEMBER_TICKET_COUNT_MAX;
@@ -90,8 +97,11 @@ class MemberTicketServiceConcurrencyTest {
         }
     }
 
+    /*
+     * TODO: 테스트를 성공시키자!
+     */
     @Test
-    void 티켓당_재고_제한_초과하는_요청_시_정상_처리_여부를_검증한다() {
+    void 티켓_재고_보다_많은_구매_요청이_들어온_문제() {
         int ticketQuantity = 10;
         int memberCount = 10;
         Ticket ticket = createTicket("목성행", ticketQuantity);
@@ -151,7 +161,7 @@ class MemberTicketServiceConcurrencyTest {
 
     private List<Member> createMembers(int memberCount) {
         return IntStream.range(0, memberCount)
-                .mapToObj(sequence -> memberRepository.save(new Member("멤버" + sequence)))
-                .toList();
+            .mapToObj(sequence -> memberRepository.save(new Member("멤버" + sequence)))
+            .toList();
     }
 }
