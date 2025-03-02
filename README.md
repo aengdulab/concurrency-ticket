@@ -44,3 +44,36 @@
 - 코드를 깔끔하게 유지한다.
 
 ---
+
+## 📝 힌트
+
+미션을 진행하면서 도움이 될만한 내용을 정리한다.
+
+### 미션 시작 - Docker 실행 방법 
+
+미션에서 사용하는 MySQL은 Docker 컨테이너와 Docker Compose 관리되고 있다. Docker를 사용하는 방법은 다음과 같다.  
+아래 명령어는 모두 Docker Compose 명령어로 docker-compose.yml이 있는 ./docker 디렉토리로 이동해서 입력해야 한다.   
+
+- `docker-compose up -d` 명령어를 실행한다.
+- `docker-compose ps` 명령어로 컨테이너가 정상적으로 실행되었는지 확인한다.
+- `docker-compose down` 명령어로 컨테이너를 종료한다.
+- `docker-compose down --rmi all` 명령어로 컨테이너와 이미지를 모두 삭제한다.
+- MySQL 스키마(schema.sql)를 변경한 경우에는 다음을 반드시 수행해야 한다.
+   - ./docker/db/mysql/data 디렉토리를 삭제한다. 
+   - `docker-compose down --rmi all` 명령어로 컨테이너와 이미지를 모두 삭제한다.
+   - `docker-compose up -d` 명령어로 컨테이너를 다시 실행한다.
+- MySQL 컨테이너에 접속하려면 다음 명령어를 실행한다.
+   - `docker-compose exec mysql mysql -u root -p` 명령어로 MySQL에 접속한다. 
+   - 패스워드는 `root`이다.
+
+### 미션 학습 키워드
+
+문제 해결 방향성을 잡지 못할 때, 다음 키워드를 학습해 보자. 
+
+- 트랜잭션(Transaction)
+- Deadlock
+- S-락(Shared Lock), X-락(Exclusive Lock)
+- Java synchronized
+- Spring @Transactional 프록시
+- 낙관락(Optimistic Locking), 비관락(Pessimistic Locking)
+- 재시도(Retry)
