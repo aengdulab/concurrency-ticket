@@ -59,34 +59,34 @@
 
 - 컨테이너를 실행하려면 다음 명령어를 실행한다.
     ```bash
-        docker-compose up -d
+    docker-compose up -d
     ```
 - 컨테이너가 정상적으로 실행되었는지 확인하려면 다음 명령어를 실행한다.
     ```bash
-        docker-compose ps
+    docker-compose ps
     ```
 - 컨테이너 로그를 확인하려면 다음 명령어를 실행한다.
     ```bash
-        docker-compose logs -f
+    docker-compose logs -f
     ```
 - 컨테이너를 종료하려면 다음 명령어를 실행한다.
     ```bash
-        docker-compose down
+    docker-compose down
     ```
 - 컨테이너를 종료하고 삭제하려면 다음 명령어를 실행한다.
     ```bash
-        docker-compose down --rmi all
+    docker-compose down --rmi all
     ```
 - MySQL 컨테이너에 접속하려면 다음 명령어를 실행한다.
     ```bash
-        docker-compose exec mysql mysql -u root -p
+    docker-compose exec mysql mysql -u root -p
     ```
 - MySQL 스키마(schema.sql)를 변경한 경우에는 다음을 반드시 수행해야 한다.
     - ./docker/db/mysql/data 디렉토리를 삭제한다. 
     - 컨테이너를 다시 실행한다.
         ```bash
-            docker-compose down --rmi all
-            docker-compose up -d
+        docker-compose down --rmi all
+        docker-compose up -d
         ```
 
 ### 미션 학습 키워드
