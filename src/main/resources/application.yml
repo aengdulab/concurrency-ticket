@@ -8,6 +8,11 @@ spring:
   jpa:
     properties:
       hibernate:
-        format_sql: true
-        show_sql: true
+#        format_sql: true
+#        show_sql: true
         hbm2ddl.auto: validate
+
+#logging:
+#  level:
+#    org.hibernate.SQL: DEBUG      # SQL 쿼리 출력
+#    org.hibernate.orm.jdbc.bind: TRACE  # 바인딩된 실제 값 출력

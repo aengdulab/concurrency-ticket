@@ -2,6 +2,7 @@ version: "3.9"
 services:
   db:
     image: mysql:8.0.28
+    container_name: ticket-mysql
     platform: linux/x86_64
     restart: always
     ports:
